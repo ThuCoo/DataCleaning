@@ -1,0 +1,25 @@
+shipment_id,origin_warehouse,destination_city,destination_state,carrier,ship_date,delivery_date,transit_days,date_flag,weight_kg,original_cost,cleaned_cost,was_outlier,shipment_status,items_count,damage_reported
+SHP-1017,Warehouse C,Denver,CO,Quickship,2024-02-18,2024-02-23,5,VALID,NULL,NULL,NULL,0,Pending,NULL,NULL
+SHP-1007,Warehouse D,Seattle,WA,Quickship,2024-01-20,2024-01-25,5,VALID,310.8,980,980,0,Delivered,110,Yes
+SHP-1010,Warehouse A,Dallas,TX,Fastfreight,2024-02-01,2024-02-05,4,VALID,175.3,590,590,0,Delivered,65,No
+SHP-1019,Warehouse A,Atlanta,GA,Fastfreight,2024-02-22,NULL,NULL,VALID,165,540,540,0,In Transit,60,No
+SHP-1001,Warehouse A,Dallas,TX,Fastfreight,2024-01-10,2024-01-14,4,VALID,120.5,450,450,0,Delivered,48,No
+SHP-1023,Warehouse A,Dallas,TX,Fastfreight,2024-03-05,2024-03-09,4,VALID,120.5,450,450,0,Delivered,48,Yes
+SHP-1015,Warehouse A,Houston,TX,Fastfreight,2024-02-12,2024-02-16,4,VALID,98.4,370,370,0,Delivered,40,No
+SHP-1005,Warehouse A,Houston,TX,Quickship,NULL,2024-01-20,NULL,VALID,45.2,280,280,0,Delivered,20,Yes
+SHP-1002,Warehouse B,Los Angeles,CA,Speedyhaul,2024-01-12,2024-01-11,-1,INVALID,85.3,320,320,0,Delivered,30,No
+SHP-1012,Warehouse B,Los Angeles,CA,Speedyhaul,2024-02-05,2024-02-10,5,VALID,85.3,320,320,0,Delivered,30,No
+SHP-1024,Warehouse B,Los Angeles,CA,Speedyhaul,2024-03-07,2024-03-12,5,VALID,130.2,460,460,0,Delivered,50,No
+SHP-1009,Warehouse B,Miami,FL,Speedyhaul,2024-01-25,2024-02-01,7,VALID,88.7,345,345,0,Delivered,33,NULL
+SHP-1020,Warehouse B,Miami,FL,Speedyhaul,2024-02-25,2024-03-02,6,VALID,72.1,265,265,0,Delivered,28,No
+SHP-1006,Warehouse B,Phoenix,AZ,Speedyhaul,2024-01-18,2024-01-23,5,VALID,95,NULL,NULL,0,Delivered,NULL,No
+SHP-1016,Warehouse B,Phoenix,AZ,Speedyhaul,2024-02-14,2024-02-19,5,VALID,95,15000,988.75,1,Delivered,35,Yes
+SHP-1013,Warehouse C,Unknown,IL,Fastfreight,2024-02-08,2024-02-12,4,VALID,225,670,670,0,Delivered,80,Yes
+SHP-1004,Warehouse C,Chicago,IL,Fastfreight,2024-01-15,2024-01-19,4,VALID,200,610,610,0,In Transit,75,NULL
+SHP-1021,Warehouse C,Chicago,IL,Fastfreight,2024-03-01,2024-03-05,4,VALID,190,600,600,0,Delivered,70,No
+SHP-1008,Warehouse C,Denver,CO,Fastfreight,2024-01-22,2024-01-27,5,VALID,150,520,520,0,Pending,55,No
+SHP-1025,Warehouse C,San Francisco,CA,Quickship,2024-03-10,2024-03-15,5,VALID,145.9,500,500,0,Delivered,54,No
+SHP-1022,Warehouse D,Portland,OR,Quickship,2024-03-03,2024-03-08,5,VALID,55.4,195,195,0,Cancelled,22,No
+SHP-1011,Warehouse D,Portland,OR,Quickship,2024-02-03,2024-02-08,5,VALID,60,210,210,0,Cancelled,15,No
+SHP-1014,Warehouse D,San Francisco,CA,Quickship,2024-02-10,2024-02-15,5,VALID,140.6,485,485,0,In Transit,52,No
+SHP-1018,Warehouse D,Seattle,WA,Quickship,2024-02-20,2024-02-25,5,VALID,310.8,980,980,0,Delivered,110,No
