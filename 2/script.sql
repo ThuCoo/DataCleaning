@@ -32,8 +32,8 @@ CREATE TABLE shipments (
 );
 
 -- Insert Data
-BULK INSERT dbo.shipments FROM 'C:\Users\THU THAO\Downloads\self studi\DA\DataCleaning\2\dirty_shipments.csv'
-    WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '0x0a', CODEPAGE = '65001');
+BULK INSERT dbo.shipments FROM 'dirty_shipments.csv'
+    WITH (FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '0x0a', CODEPAGE = '65001');
 
 SELECT *
 FROM   dbo.shipments;
@@ -152,6 +152,8 @@ FROM   dbo.shipments AS sh CROSS JOIN bounds AS bd;
 
 GO
 -- 8. Combine All
+DROP TABLE IF EXISTS #cleaned;
+
 DROP FUNCTION IF EXISTS dbo.INITCAP;
 
 
@@ -220,4 +222,46 @@ SELECT shipment_id,
        shipment_status,
        items_count,
        damage_reported
+INTO   #cleaned
 FROM   ttemp;
+
+
+GO
+-- 9. Update Into Database
+IF COL_LENGTH('dbo.shipments', 'transit_days') IS NULL
+    BEGIN
+        ALTER TABLE dbo.shipments
+            ADD transit_days INT          ,
+                date_flag    NVARCHAR (20),
+                cleaned_cost INT          ,
+                was_outlier  BIT          ;
+    END
+
+
+GO
+UPDATE s
+SET    s.origin_warehouse  = c.origin_warehouse,
+       s.destination_city  = c.destination_city,
+       s.destination_state = c.destination_state,
+       s.carrier           = c.carrier,
+       s.ship_date         = c.ship_date,
+       s.delivery_date     = c.delivery_date,
+       s.transit_days      = c.transit_days,
+       s.date_flag         = c.date_flag,
+       s.weight_kg         = c.weight_kg,
+       s.freight_cost      = c.original_cost,
+       s.cleaned_cost      = c.cleaned_cost,
+       s.was_outlier       = c.was_outlier,
+       s.shipment_status   = c.shipment_status,
+       s.items_count       = c.items_count,
+       s.damage_reported   = c.damage_reported
+FROM   dbo.shipments AS s
+       INNER JOIN
+       #cleaned AS c
+       ON c.shipment_id = s.shipment_id;
+
+ALTER TABLE dbo.shipments ALTER COLUMN ship_date DATE;
+
+ALTER TABLE dbo.shipments ALTER COLUMN delivery_date DATE;
+
+EXECUTE sp_rename 'dbo.shipments.freight_cost', 'original_cost', 'COLUMN';
